@@ -1,5 +1,4 @@
 use std::str::FromStr;
-use std::io::Write;
 
 struct Item {
     name: &'static str,
@@ -34,7 +33,6 @@ fn input<T: FromStr>(prompt: &str) -> T {
     loop {
         let mut input_value: String = String::new();
         print!("{}", prompt);
-        if std::io::stdout().flush().is_err() { println!("") }
         match std::io::stdin().read_line(&mut input_value) {
             Ok(_) => match input_value.trim().parse::<T>() {
                     Ok(return_value) => return return_value,
